@@ -1,0 +1,3 @@
+cookbook "enforce_supported_platform" do
+
+end
