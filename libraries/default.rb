@@ -10,7 +10,7 @@ class Chef
     end
 
     def supported_platform?
-      run_context.cookbook_collection[cookbook_name].metadata.platforms.include?(node['platform'])
+      !!run_context.cookbook_collection[cookbook_name].metadata.platforms.find { |k,v| Gem::Dependency.new(k,v).match?(node['platform'], node['platform_version']) }
     end
   end
 end
